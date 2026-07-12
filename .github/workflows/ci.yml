@@ -1,0 +1,45 @@
+# Generic CI skeleton — adapt the runtime + commands to your stack, then delete
+# this comment. Mirrors the local loop: install → (codegen) → lint → test.
+# Branch protection on `main` should require this check to pass.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  # Enforce Conventional Commit PR titles (optional — delete if unused).
+  pr-title:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # --- Replace this block with your stack's setup ---------------------
+      # Node:    - uses: actions/setup-node@v4 (with: node-version, cache: npm)
+      # Flutter: - uses: subosito/flutter-action@v2 (with: channel: stable)
+      # Python:  - uses: actions/setup-python@v5 (with: python-version)
+      # Go/Rust/etc: the matching setup action.
+      # --------------------------------------------------------------------
+
+      - name: Install dependencies
+        run: echo "TODO: <<install, e.g. npm ci / flutter pub get>>"
+
+      # If the stack uses codegen, run it BEFORE lint/test (generated files are
+      # gitignored). Delete if not applicable.
+      - name: Generate code
+        run: echo "TODO: <<codegen, e.g. dart run build_runner build --delete-conflicting-outputs>>"
+
+      - name: Lint / static analysis
+        run: echo "TODO: <<lint, e.g. npm run lint / flutter analyze>>"
+
+      - name: Test
+        run: echo "TODO: <<test, e.g. npm test / flutter test>>"

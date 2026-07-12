@@ -1,0 +1,20 @@
+# RTK output filters for this repo (committed → travel with the project).
+# Add a filter per verbose command (test/lint/build) so agents get compact
+# output. Filters are command-keyed, so they apply to ANY assistant that runs
+# the command through `rtk`. Below is an example — adapt the regex + keep-lines
+# to your test runner, then delete this comment.
+schema_version = 1
+
+# [filters.example-test]
+# description = "Compact <toolname> test output"
+# match_command = ".*<toolname>\\s+test\\b.*"
+# strip_ansi = true
+# filter_stderr = true
+# tail_lines = 20
+# keep_lines_matching = [
+#   "passed",
+#   "failed",
+#   "^\\s*FAIL",
+#   "^\\s*Error",
+# ]
+# on_empty = "<toolname> test: all passed"
