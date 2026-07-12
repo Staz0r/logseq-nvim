@@ -40,6 +40,15 @@ Research and architecture are complete; implementation has not started. Read
 [research](docs/RESEARCH.md), [architecture](docs/ARCHITECTURE.md), and the
 [roadmap](docs/ROADMAP.md) before proposing code.
 
+## Open source and prototype-first
+
+This project is intended for public open-source collaboration under the MIT
+License. The next goal is not a complete Logseq replacement: it is one useful
+vertical slice that a developer can use daily—project-memory retrieval in
+Neovim plus a reviewed native-MCP handoff. We will refine property names,
+schemas, and token-efficient retrieval from observed usage, not invent a final
+ontology before the prototype exists.
+
 ## References
 
 - [Logseq DB documentation](https://github.com/logseq/docs/blob/master/db-version.md)

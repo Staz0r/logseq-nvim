@@ -50,3 +50,15 @@ bottom.
 > separate custom MCP bridge are superseded. They would duplicate or diverge
 > from Logseq’s official graph validation and native MCP API.
 > **Status:** accepted; supersedes the three decisions above.
+
+### 2026-07-13 — Validate a narrow workflow before fixing the memory schema
+
+> **Decision:** Build and use a small project-memory prototype before publishing
+> a final property taxonomy or token-optimization scheme.
+> **Why:** The useful unit of retrieval, naming, and summarization depends on
+> actual coding-session behavior. Premature schema design would make the plugin
+> opinionated without evidence.
+> **Alternatives considered:** Defining a complete Logseq ontology before code
+> was rejected; generic unstructured note dumping was rejected because it cannot
+> be evaluated or safely scoped.
+> **Status:** accepted
