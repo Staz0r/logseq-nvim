@@ -13,10 +13,18 @@
 - [ ] Neovim picker/quickfix views for pages, blocks, and query results.
 - [ ] Fixture-driven adapter tests and headless Neovim command tests.
 
+### Prototype exit criterion
+
+Before expanding scope, use the prototype on a real coding project for at least
+one week. It succeeds only if it makes session start/resume faster than manually
+finding Logseq pages and produces a trustworthy, reviewable handoff.
+
 ## Phase 2 — Coding-memory conventions
 
-- [ ] Define installable graph schema for project, decision, handoff, lesson,
-  and active-task nodes.
+- [ ] Observe the prototype’s actual retrieval and handoff needs before fixing
+  property names or a public schema.
+- [ ] Define an installable graph schema for project, decision, handoff, lesson,
+  and active-task nodes from those observations.
 - [ ] `:LogseqProjectMemory` view and daily-session handoff flow.
 - [ ] Project-scoped query templates with bounded results and provenance.
 
