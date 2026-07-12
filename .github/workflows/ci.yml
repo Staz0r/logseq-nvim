@@ -30,7 +30,8 @@ jobs:
 
       - name: Reject unfilled starter placeholders
         run: |
-          if grep -R -n -E --exclude-dir=.git '<<[^>]+>>' .; then
+          if grep -n -E '<<[^>]+>>' README.md AGENTS.md CLAUDE.md GEMINI.md \
+            docs/*.md .github/workflows/*.yml .gitignore; then
             echo "Unfilled project-starter placeholder found."
             exit 1
           fi

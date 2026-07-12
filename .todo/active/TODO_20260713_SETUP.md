@@ -14,7 +14,7 @@ chore
 
 # Status
 
-completed
+active
 
 # Effort
 
@@ -47,7 +47,6 @@ S
 
 # Result
 
-Replaced the placeholder CI with dependency-free repository-integrity checks,
-added the implementation plan with evidence gates and uncertainty controls, and
-created the Logseq Nvim Warp launch configuration. Plugin test commands remain
-intentionally deferred until Phase 1 chooses the implementation toolchain.
+Pending CI validation. The first CI revision incorrectly scanned intentionally
+unfilled reusable templates; the placeholder check is being narrowed to project
+documents.
