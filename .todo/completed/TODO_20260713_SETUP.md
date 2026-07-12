@@ -14,7 +14,7 @@ chore
 
 # Status
 
-active
+completed
 
 # Effort
 
@@ -47,6 +47,7 @@ S
 
 # Result
 
-Pending CI validation. The first CI revision incorrectly scanned intentionally
-unfilled reusable templates; the placeholder check is being narrowed to project
-documents.
+Replaced the placeholder CI with dependency-free repository-integrity checks,
+added the implementation plan with evidence gates and uncertainty controls, and
+created the Logseq Nvim Warp launch configuration. The CI passed after its
+placeholder check was narrowed to actual project documents.
