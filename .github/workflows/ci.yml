@@ -1,6 +1,3 @@
-# Generic CI skeleton — adapt the runtime + commands to your stack, then delete
-# this comment. Mirrors the local loop: install → (codegen) → lint → test.
-# Branch protection on `main` should require this check to pass.
 name: CI
 
 on:
@@ -8,38 +5,37 @@ on:
   push:
     branches: [main]
 
-jobs:
-  # Enforce Conventional Commit PR titles (optional — delete if unused).
-  pr-title:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
-    steps:
-      - uses: amannn/action-semantic-pull-request@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+permissions:
+  contents: read
 
-  test:
+jobs:
+  repository-integrity:
+    name: Repository integrity
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      # --- Replace this block with your stack's setup ---------------------
-      # Node:    - uses: actions/setup-node@v4 (with: node-version, cache: npm)
-      # Flutter: - uses: subosito/flutter-action@v2 (with: channel: stable)
-      # Python:  - uses: actions/setup-python@v5 (with: python-version)
-      # Go/Rust/etc: the matching setup action.
-      # --------------------------------------------------------------------
+      - name: Check committed whitespace
+        run: git show --check --oneline HEAD
 
-      - name: Install dependencies
-        run: echo "TODO: <<install, e.g. npm ci / flutter pub get>>"
+      - name: Check required project documents
+        run: |
+          test -f README.md
+          test -f AGENTS.md
+          test -f LICENSE
+          test -f docs/ARCHITECTURE.md
+          test -f docs/IMPLEMENTATION_PLAN.md
+          test -f docs/RESEARCH.md
+          test -f docs/ROADMAP.md
 
-      # If the stack uses codegen, run it BEFORE lint/test (generated files are
-      # gitignored). Delete if not applicable.
-      - name: Generate code
-        run: echo "TODO: <<codegen, e.g. dart run build_runner build --delete-conflicting-outputs>>"
+      - name: Reject unfilled starter placeholders
+        run: |
+          if grep -R -n -E --exclude-dir=.git '<<[^>]+>>' .; then
+            echo "Unfilled project-starter placeholder found."
+            exit 1
+          fi
 
-      - name: Lint / static analysis
-        run: echo "TODO: <<lint, e.g. npm run lint / flutter analyze>>"
-
-      - name: Test
-        run: echo "TODO: <<test, e.g. npm test / flutter test>>"
+      - name: Explain current test scope
+        run: |
+          echo "No plugin toolchain exists yet."
+          echo "Phase 1 must add Lua adapter tests and headless Neovim tests."
